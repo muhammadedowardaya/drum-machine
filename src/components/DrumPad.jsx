@@ -1,0 +1,73 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import '../styles/DrumPad.scss';
+import { formatWord } from '../utils/formatWord';
+import { setDisplay } from '../features/audios/audioSlice';
+
+export default function DrumPad() {
+	const power = useSelector((state) => state.audios.power);
+	const volume = useSelector((state) => state.audios.volume);
+	const audios = useSelector((state) => state.audios.data);
+
+	const dispatch = useDispatch();
+
+	const handleKeyPress = (event) => {
+		const key = event.key.toUpperCase();
+		if (power) {
+			if (audios[key]) {
+				const audioElement = document.getElementById(key);
+				if (audioElement) {
+                    audioElement.volume = volume;
+					audioElement.pause();
+					audioElement.currentTime = 0;
+					audioElement.play();
+				}
+				audioElement.parentNode.classList.add('active');
+				setTimeout(() => {
+					audioElement.parentNode.classList.remove('active');
+				}, 100);
+
+				const dataName = audioElement.getAttribute('data-name');
+				dispatch(setDisplay(formatWord(dataName)));
+			}
+		}
+	};
+
+	React.useEffect(() => {
+		window.addEventListener('keydown', handleKeyPress);
+
+		return () => {
+			window.removeEventListener('keydown', handleKeyPress);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [volume]);
+
+	const handlePad = (event) => {
+		if (power) {
+			event.target.querySelector('audio').pause();
+			event.target.querySelector('audio').currentTime = 0;
+			event.target.querySelector('audio').play();
+
+			event.target.classList.add('active');
+			setTimeout(() => {
+				event.target.classList.remove('active');
+			}, 100);
+		}
+	};
+
+	return (
+		<div className="pad-bank">
+			{Object.entries(audios).map((data) => (
+				<div className="drum-pad" key={data[0]} onClick={handlePad}>
+					{data[0]}
+					<audio
+						src={`/audios/${data[1]}.mp3`}
+						className="clip"
+						data-name={data[1]}
+						id={data[0]}
+					></audio>
+				</div>
+			))}
+		</div>
+	);
+}

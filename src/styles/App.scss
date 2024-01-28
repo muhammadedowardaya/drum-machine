@@ -1,0 +1,19 @@
+@import './colors';
+
+#drum-machine {
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+	margin: auto 1rem;
+	padding: 2rem;
+	background-color: $color3;
+	width: 100%;
+	max-width: 600px;
+    font-family: 'Russo One', sans-serif;
+}
+
+@media only screen and (min-width: 600px) {
+	#drum-machine {
+		display: flex;
+		justify-content: space-evenly;
+		width: 100%;
+	}
+}

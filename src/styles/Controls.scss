@@ -1,0 +1,111 @@
+@import './colors';
+
+.controls-container {
+	margin: auto;
+	padding: 1rem;
+
+	.control {
+		width: max-content;
+		font-size: 1.8rem;
+		font-weight: 600;
+		margin: 0 auto;
+		color: #fff;
+
+		p {
+			text-align: center;
+			margin: 0.5rem 0;
+			letter-spacing: 0.5rem;
+		}
+
+		.select {
+			background-color: #000;
+			width: 40px;
+			height: 20px;
+			padding: 4px;
+			margin: 0 auto;
+
+			&.active {
+				.inner {
+					float: right;
+				}
+			}
+
+			.inner {
+				width: 50%;
+				height: 100%;
+				background-color: $color7;
+			}
+		}
+	}
+
+	#display {
+		height: 40px;
+		background-color: $color4;
+		color: $color8;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2rem;
+		letter-spacing: 0.5rem;
+		margin: 1rem 0;
+	}
+
+	.volume-slider {
+		width: max-content;
+		margin: 1rem auto;
+
+		input[type='range'] {
+			appearance: none;
+			width: 100%;
+			height: 5px;
+			background: $color1;
+			cursor: pointer;
+		}
+
+		input[type='range']::-webkit-slider-thumb {
+			appearance: none;
+			width: 8px;
+			height: 20px;
+			// border-radius: 50%;
+			background: $color6;
+			cursor: pointer;
+		}
+
+		input[type='range']::-moz-range-thumb {
+			appearance: none;
+			width: 8px;
+			height: 20px;
+			// border-radius: 50%;
+			background: $color6;
+			cursor: pointer;
+		}
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.controls-container {
+		padding: 0 0 0 2rem;
+		width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+		.control {
+			font-size: 2rem;
+
+			p {
+				margin: 1rem 0;
+			}
+
+			.select {
+				width: 60px;
+				height: 25px;
+			}
+		}
+
+		#display {
+            margin-top: 2rem;
+			width: 200px;
+		}
+	}
+}
