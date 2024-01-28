@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 // font-family: 'Russo One', sans-serif;
 
-
 *,
 *::after,
 *::before {
@@ -17,12 +16,13 @@ html {
 }
 
 body {
-	background-color: $color4;
+    background-color: $color4;
+	font-family: 'Russo One', sans-serif;
 }
 
 #root {
-	min-height: 100vh;
+    min-height: 100vh;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+    position: relative;
 }

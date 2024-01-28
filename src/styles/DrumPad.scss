@@ -1,40 +1,48 @@
-@import "./colors";
+@import './colors';
 
 .pad-bank {
 	display: grid;
-    grid-template-columns: repeat(3,15vw);
-    grid-template-rows: repeat(3,15vw);
-    justify-content: center;
-    gap:1rem;
-    padding:1rem;
-    background-color: $color2;
-    width: max-content;
-    margin: auto;
+	grid-template-columns: repeat(3, 15vw);
+	grid-template-rows: repeat(3, 15vw);
+	justify-content: center;
+	gap: 1rem;
+	padding: 1rem;
+	background-color: $color2;
+	width: max-content;
+	margin: auto;
 
 	.drum-pad {
 		width: 100%;
 		height: 100%;
 		box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
 		display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-        background-color: $color1;
-        font-size: 2rem;
-        font-weight: 600;
-        border-radius: 0.3rem;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		background-color: $color1;
+		font-size: 2rem;
+		font-weight: 600;
+		border-radius: 0.3rem;
 
-        &.active {
-            border:2px solid $color1;
-            color: $color1;
-            background-color: $color4;
-        }
+		&.active {
+			border: 2px solid $color1;
+			color: $color1;
+			background-color: $color4;
+		}
 	}
 }
 
-@media only screen and (min-width:600px) {
-    .pad-bank {
-        grid-template-columns: repeat(3,80px);
-        grid-template-rows: repeat(3,80px);
-    }
+@media only screen and (min-width: 460px) {
+	.pad-bank {
+		grid-template-columns: repeat(3, 60px);
+		grid-template-rows: repeat(3, 60px);
+		gap: 2rem;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.pad-bank {
+		grid-template-columns: repeat(3, 80px);
+		grid-template-rows: repeat(3, 80px);
+	}
 }

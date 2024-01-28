@@ -1,19 +1,99 @@
 @import './colors';
 
-#drum-machine {
-	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
-	margin: auto 1rem;
-	padding: 2rem;
-	background-color: $color3;
-	width: 100%;
-	max-width: 600px;
-    font-family: 'Russo One', sans-serif;
+$waveColor: #3498db;
+
+@keyframes wave-animation {
+	0% {
+		box-shadow: 0 0 0 0 $waveColor; // Warna awal gelombang
+	}
+	50% {
+		box-shadow: 0 0 0 40px transparent, 0 0 0 80px transparent; // Ukuran dan warna gelombang
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent; // Warna gelombang kembali ke transparan
+	}
 }
 
-@media only screen and (min-width: 600px) {
-	#drum-machine {
+.app-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 2rem auto auto auto;
+	user-select: none;
+
+	&.active {
+		border: 2px solid $border;
+	}
+
+	#title-app {
+		color: #fff;
+		padding: 1rem;
+		margin: 1rem 0;
 		display: flex;
-		justify-content: space-evenly;
+		flex-direction: column;
+		align-items: center;
+
+		#my-photo {
+			width: 120px; // Sesuaikan ukuran foto sesuai keinginan Anda
+			height: 120px;
+			background-image: url('/public/images/saya-pake-masker.jpg'); // Ganti dengan path gambar Anda
+			background-size: cover;
+			border-radius: 50%;
+			position: relative;
+			overflow: hidden;
+			margin-bottom: 1rem;
+
+			img {
+				border-radius: 50%;
+				width: 100%;
+				object-fit: cover;
+			}
+
+            &.active {
+                animation: wave-animation 1s linear infinite;
+            }
+		}
+
+		h1 {
+			font-size: 3rem;
+		}
+
+		p {
+			font-size: 1.5rem;
+		}
+	}
+
+	#drum-machine {
+		box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+		padding: 2rem;
+		background-color: $color3;
 		width: 100%;
+		max-width: 600px;
+        margin-bottom: 4rem;
+	}
+}
+
+@media only screen and (min-width: 460px) {
+	.app-wrapper {
+		// margin:2rem auto auto auto;
+		#drum-machine {
+			display: flex;
+			justify-content: space-evenly;
+
+			.controls-container {
+				#display {
+					font-size: 1.4rem;
+				}
+			}
+		}
+
+		#title-app {
+			margin: 2rem auto;
+			flex-direction: row;
+
+			#my-photo {
+				margin-right: 2rem;
+			}
+		}
 	}
 }

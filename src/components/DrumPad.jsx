@@ -12,12 +12,15 @@ export default function DrumPad() {
 	const dispatch = useDispatch();
 
 	const handleKeyPress = (event) => {
+        event.preventDefault();
 		const key = event.key.toUpperCase();
+
 		if (power) {
 			if (audios[key]) {
 				const audioElement = document.getElementById(key);
+				const dataName = audioElement.getAttribute('data-name');
 				if (audioElement) {
-                    audioElement.volume = volume;
+					audioElement.volume = volume;
 					audioElement.pause();
 					audioElement.currentTime = 0;
 					audioElement.play();
@@ -27,9 +30,10 @@ export default function DrumPad() {
 					audioElement.parentNode.classList.remove('active');
 				}, 100);
 
-				const dataName = audioElement.getAttribute('data-name');
 				dispatch(setDisplay(formatWord(dataName)));
 			}
+		} else {
+			dispatch(setDisplay(formatWord('Power is OFF')));
 		}
 	};
 
@@ -39,10 +43,13 @@ export default function DrumPad() {
 		return () => {
 			window.removeEventListener('keydown', handleKeyPress);
 		};
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [volume]);
+	}, [volume, power]);
 
 	const handlePad = (event) => {
+        event.preventDefault();
+        
 		if (power) {
 			event.target.querySelector('audio').pause();
 			event.target.querySelector('audio').currentTime = 0;
@@ -52,6 +59,13 @@ export default function DrumPad() {
 			setTimeout(() => {
 				event.target.classList.remove('active');
 			}, 100);
+
+			const dataName = event.target
+				.querySelector('audio')
+				.getAttribute('data-name');
+			dispatch(setDisplay(formatWord(dataName)));
+		} else {
+			dispatch(setDisplay(formatWord('Power is OFF')));
 		}
 	};
 

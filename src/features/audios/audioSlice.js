@@ -24,12 +24,15 @@ const audios2 = {
 	C: 'snare',
 };
 
+
 const initialState = {
 	data: audios1,
+	myAudio: 1,
 	bank: false,
 	power: false,
 	volume: 1,
 	display: '',
+	borderColor: 1,
 };
 
 export const audiosSlice = createSlice({
@@ -53,9 +56,23 @@ export const audiosSlice = createSlice({
 		setDisplay: (state, action) => {
 			state.display = action.payload;
 		},
+		changeBorderColor: (state) => {
+			if (state.borderColor < 8) {
+				state.borderColor += 1;
+			} else {
+				state.borderColor = 1;
+			}
+		},
+		changeMyAudio: (state) => {
+			if (state.myAudio < 3) {
+				state.myAudio += 1;
+			} else {
+				state.myAudio = 1;
+			}
+		},
 	},
 });
 
-export const { toggleBank, togglePower, setVolume, setDisplay } =
+export const { changeMyAudio, toggleBank, togglePower, setVolume, setDisplay } =
 	audiosSlice.actions;
 export default audiosSlice.reducer;
