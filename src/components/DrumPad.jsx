@@ -38,6 +38,7 @@ export default function DrumPad() {
 	};
 
 	React.useEffect(() => {
+		console.info(volume);
 		window.addEventListener('keydown', handleKeyPress);
 
 		return () => {
@@ -51,6 +52,7 @@ export default function DrumPad() {
 		event.preventDefault();
 
 		if (power) {
+            event.target.querySelector('audio').volume = volume;
 			event.target.querySelector('audio').pause();
 			event.target.querySelector('audio').currentTime = 0;
 			event.target.querySelector('audio').play();

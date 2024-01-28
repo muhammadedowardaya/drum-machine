@@ -42,8 +42,7 @@ export default function Controls() {
 					min="0"
 					step="0.01"
 					onChange={handleVolume}
-					value={volume}
-                    onInput={handleVolume}
+					defaultValue={volume}
 				/>
 			</div>
 			<div className="control" onClick={handleBank}>
