@@ -2,7 +2,7 @@
 
 .pad-bank {
 	display: grid;
-	grid-template-columns: repeat(3, 15vw);
+	grid-template-columns: repeat(3, 24vw);
 	grid-template-rows: repeat(3, 15vw);
 	justify-content: center;
 	gap: 1rem;
@@ -34,7 +34,7 @@
 
 @media only screen and (min-width: 460px) {
 	.pad-bank {
-		grid-template-columns: repeat(3, 60px);
+		grid-template-columns: repeat(3, 15vw);
 		grid-template-rows: repeat(3, 60px);
 		gap: 2rem;
 	}
@@ -42,7 +42,14 @@
 
 @media only screen and (min-width: 600px) {
 	.pad-bank {
-		grid-template-columns: repeat(3, 80px);
+		grid-template-columns: repeat(3, 15vw);
 		grid-template-rows: repeat(3, 80px);
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	.pad-bank {
+		grid-template-columns: repeat(3, 150px);
+		grid-template-rows: repeat(3, 90px);
 	}
 }
