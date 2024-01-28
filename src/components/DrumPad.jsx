@@ -12,7 +12,7 @@ export default function DrumPad() {
 	const dispatch = useDispatch();
 
 	const handleKeyPress = (event) => {
-        event.preventDefault();
+		event.preventDefault();
 		const key = event.key.toUpperCase();
 
 		if (power) {
@@ -48,7 +48,7 @@ export default function DrumPad() {
 	}, [volume, power]);
 
 	const handlePad = (event) => {
-        event.preventDefault();
+		event.preventDefault();
 
 		if (power) {
 			event.target.querySelector('audio').pause();
@@ -72,7 +72,7 @@ export default function DrumPad() {
 	return (
 		<div className="pad-bank">
 			{Object.entries(audios).map((data) => (
-				<div className="drum-pad" key={data[0]} onClick={handlePad} onTouchStart={handlePad}>
+				<div className="drum-pad" key={data[0]} onClick={handlePad}>
 					{data[0]}
 					<audio
 						src={`/audios/${data[1]}.mp3`}
