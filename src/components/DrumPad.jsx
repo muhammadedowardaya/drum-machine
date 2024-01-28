@@ -40,10 +40,12 @@ export default function DrumPad() {
 	React.useEffect(() => {
 		window.addEventListener('keydown', handleKeyPress);
 		window.addEventListener('touchstart', handleKeyPress);
+		window.addEventListener('touchend', handleKeyPress);
 
 		return () => {
 			window.removeEventListener('keydown', handleKeyPress);
 			window.removeEventListener('touchstart', handleKeyPress);
+			window.removeEventListener('touchend', handleKeyPress);
 		};
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
