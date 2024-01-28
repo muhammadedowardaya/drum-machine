@@ -43,6 +43,7 @@ export default function Controls() {
 					step="0.01"
 					onChange={handleVolume}
 					value={volume}
+                    onInput={handleVolume}
 				/>
 			</div>
 			<div className="control" onClick={handleBank}>
