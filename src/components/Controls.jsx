@@ -13,19 +13,15 @@ export default function Controls() {
 	const volume = useSelector((state) => state.audios.volume);
 	const dispatch = useDispatch();
 
-	const handlePower = (event) => {
-        event.preventDefault();
+	const handlePower = () => {
 		dispatch(togglePower());
 	};
 
-	const handleBank = (event) => {
-        event.preventDefault();
+	const handleBank = () => {
 		dispatch(toggleBank());
 	};
 
 	const handleVolume = (event) => {
-        event.preventDefault();
-
 		const newVolume = parseFloat(event.target.value);
 		dispatch(setVolume(newVolume));
 	};

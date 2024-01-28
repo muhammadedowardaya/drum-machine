@@ -49,7 +49,7 @@ export default function DrumPad() {
 
 	const handlePad = (event) => {
         event.preventDefault();
-        
+
 		if (power) {
 			event.target.querySelector('audio').pause();
 			event.target.querySelector('audio').currentTime = 0;
@@ -72,7 +72,7 @@ export default function DrumPad() {
 	return (
 		<div className="pad-bank">
 			{Object.entries(audios).map((data) => (
-				<div className="drum-pad" key={data[0]} onClick={handlePad}>
+				<div className="drum-pad" key={data[0]} onClick={handlePad} onTouchStart={handlePad}>
 					{data[0]}
 					<audio
 						src={`/audios/${data[1]}.mp3`}
